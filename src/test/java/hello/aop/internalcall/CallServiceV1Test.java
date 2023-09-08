@@ -1,24 +1,28 @@
-package hello.aop.internalcall.aop;
+package hello.aop.internalcall;
 
+import hello.aop.internalcall.CallServiceV1;
+import hello.aop.internalcall.aop.CallLogAspect;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@Slf4j
 @SpringBootTest
 @Import(CallLogAspect.class)
-class CallServiceV2Test {
+class CallServiceV1Test {
 
     @Autowired
-    CallServiceV2 callServiceV2;
+    CallServiceV1 callServiceV1;
+
     @Test
     void external() {
-        callServiceV2.external();
+        callServiceV1.external();
     }
 
     @Test
     void internal() {
+        callServiceV1.internal();
     }
 }
